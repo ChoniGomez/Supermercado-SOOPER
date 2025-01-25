@@ -12,7 +12,8 @@ import java.util.Set;
  * @author Jonathan Matias Gomez
  */
 public interface IPedido {
-    	String getReferencia();
+	
+	String getReferencia();
 	
 	Set<IProducto> getProductos();
 
@@ -21,5 +22,5 @@ public interface IPedido {
 	void addContenedor(IContenedor contenedor);
 	
 	IContenedor addProducto(IProducto producto);
-
 }
+

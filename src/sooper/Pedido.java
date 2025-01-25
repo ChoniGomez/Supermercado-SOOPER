@@ -29,8 +29,15 @@ public class Pedido implements IPedido {
 
 	@Override
 	public Set<IProducto> getProductos() {
-		// TODO Auto-generated method stub
-		return null;
+		Set<IProducto> productos = null;
+		for (IContenedor c : contenedores) {
+			if (productos == null) {
+				productos = c.getProductos();
+			} else {
+				productos.addAll(c.getProductos());
+			}
+		}
+		return productos;
 	}
 
 	@Override
@@ -50,6 +57,7 @@ public class Pedido implements IPedido {
 				return contenedor;
 			}			
 		}
+		System.err.println(producto.getReferencia() + " rechazado del pedido"); 
 		return null;
 	}
 

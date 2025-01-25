@@ -5,15 +5,24 @@
  */
 package sooper.productos;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Jonathan Matias Gomez
  */
-public class Fresco extends Alimentacion {
+public class Fresco extends Alimentacion implements Caducable {
 
-	public Fresco(String referencia, int peso, int volumen) {
+	private LocalDate caducidad;
+	
+	public Fresco(String referencia, int peso, int volumen, LocalDate caducidad) {
 		super(referencia, peso, volumen);
-		// TODO Auto-generated constructor stub
+		this.caducidad = caducidad;
+	}
+
+	@Override
+	public boolean estaCaducado() {
+		return caducidad.isBefore(LocalDate.now());
 	}
 
 }

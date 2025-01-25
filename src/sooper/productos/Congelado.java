@@ -5,14 +5,23 @@
  */
 package sooper.productos;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Jonathan Matias Gomez
  */
-public class Congelado extends Alimentacion {
+public class Congelado extends Alimentacion implements Caducable {
 
-	public Congelado(String referencia, int peso, int volumen) {
+	private LocalDate caducidad;
+
+	public Congelado(String referencia, int peso, int volumen, LocalDate caducidad) {
 		super(referencia, peso, volumen);
+	}
+
+	@Override
+	public boolean estaCaducado() {
+		return caducidad.isBefore(LocalDate.now());
 	}
 
 }
